@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Consumer.BackgroundService/Consumer.BackgroundService.csproj" Id="273feaee-3db4-4202-a1f6-b14fbb2527b4" />
+    <Project Path="src/Producer.Api/Producer.Api.csproj" Id="9f1464a5-d58a-4b1d-9aa2-8855e5af96dc" />
+    <Project Path="src/Shared.Events/Shared.Events.csproj" Id="74c33871-ddd4-463f-a7c6-7dd01d0b3ac2" />
+  </Folder>
+</Solution>

@@ -1,0 +1,37 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    container_name: rabbitmq_broker
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - event-bus-network
+
+  producer.api:
+    build:
+      context: .
+      dockerfile: src/Producer.Api/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - rabbitmq
+    environment:
+      - RabbitMqSettings__Host=rabbitmq
+    networks:
+      - event-bus-network
+
+  consumer.console:
+    build:
+      context: .
+      dockerfile: src/Consumer.BackgroundService/Dockerfile
+    depends_on:
+      - rabbitmq
+    environment:
+      - RabbitMqSettings__Host=rabbitmq
+    networks:
+      - event-bus-network
+
+networks:
+  event-bus-network:
+    driver: bridge
